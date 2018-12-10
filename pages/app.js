@@ -9,24 +9,24 @@ import dynamic from "next/dynamic";
   CSS
 */
 import "antd/dist/antd.css";
-import Styled from './styled/index';
-import "./css/index.css";
+import StyledWhatever from './styled/index';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
 
 /*
-  ROUTE COMPONENT
+  Export
 */
-const PageLogin = dynamic(() => import("../componentsPages/Login.js"), {
+const App = dynamic(() => import("../components/App.js"), {
 });
-
-/*
-  VIEW
-*/
 export default class extends React.Component {
+  componentDidMount() {
+  }
   render() {
     return (
-      <Styled>
+      <React.Fragment>
+        {/* <head> section, same as in regular HTML */}
         <Head>
-          <title>AllThe ~ Authenticate</title>
+          <title>AllThe ~ APP</title>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,8 +34,10 @@ export default class extends React.Component {
           {/* <link rel="stylesheet" type="text/css" href="/static/css/icomoon/style.css" /> */}
           <script type="text/javascript" src="/static/js/common.js"></script>
         </Head>
-        <PageLogin />
-      </Styled>
+
+        <App />
+        
+      </React.Fragment>
     );
   }
 }
