@@ -1,0 +1,149 @@
+/*
+  LOGIN BELOW... vvv
+*/
+
+/* ---------------------------------------------------
+  LAYOUT
+--------------------------------------------------- */
+/*
+  HEADER / LOGO
+*/
+#header {
+  display: flex;
+  position: relative;
+  height: 46px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+#header::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  padding-bottom: 1px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 33%, rgba(255, 255, 255, 0.5) 67%, rgba(255, 255, 255, 0) 100%);
+}
+
+#header #headerLogo {
+  position: relative;
+  width: 199px;
+  height: 10px;
+  margin: 17px 10px 20px 11px;
+  /*padding: 0 0 15px 1px;*/
+}
+#header #headerInfo {
+  flex-grow: 1;
+  color: #8a8e98;
+  text-align: right;
+  padding: 13px;
+  font-weight: 100;
+}
+
+/*
+  MAP / CONTENT IFRAME
+*/
+#appIframe {
+  display: block;
+  position: relative;
+  height: calc(100vh - 51px);
+  width: 100vw;
+}
+
+/*
+  LOGIN POPUP
+*/
+#login-popup-overlay {
+  /* relation to window */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  /* relation to child (popup) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* style */
+  background: hsla(40, 26%, 93%, 0.5);
+  /* disable */
+  /*pointer-events: none;
+  background: none;*/
+}
+#login-popup {
+  position: relative;
+  max-height: 280px;
+  width: 330px;
+  align-self: center;
+  background: #222a2d;
+  padding: 44px 9px 66px 6px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: solid 2px #fff;
+  pointer-events: all;
+}
+#login-popup h3 {
+  padding: 0 10px;
+  position: relative;
+  margin: 0;
+}
+#login-popup h3 img {
+  display: none;
+}
+#login-popup h3 label {
+  padding-left: 0;
+}
+#login-popup h3 a:hover {
+  color: #fff;
+}
+#login-popup h3 img {
+  margin: -4px 0 0 9px;
+}
+#login-popup h3 label {
+  display: block;
+  padding: 0;
+  color: #8a8e98;
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: normal;
+}
+#login-popup h3 label a {
+  /*text-decoration: underline;*/
+}
+#login-popup .inputs {
+  margin: 20px 0px 18px 28px;
+  padding: 0 0 0.33rem;
+  max-height: calc((100vh / 2) - 9rem);
+  overflow: auto;
+}
+#login-popup #form-ships input,
+#login-popup #form-ports input {
+  width: 100%;
+}
+
+#login-popup .buttons {
+  position: relative;
+  margin: 0 10px 10px;
+  display: flex;
+}
+#login-popup .buttons button {
+  background: #00cc00;
+  width: auto;
+  border: none;
+  margin: 0 5px 0 0;
+}
+#login-popup .buttons button:first-child {
+  flex-grow: 1;
+}
+#login-popup .buttons button:last-child {
+  margin-right: 0;
+}
+#login-popup-form {
+  width: 240px;
+  margin: 0 auto;
+  text-align: left;
+}

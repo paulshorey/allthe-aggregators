@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?2ldc27');
+  src:  url('fonts/icomoon.eot?2ldc27#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.woff2?2ldc27') format('woff2'),
+    url('fonts/icomoon.ttf?2ldc27') format('truetype'),
+    url('fonts/icomoon.woff?2ldc27') format('woff'),
+    url('fonts/icomoon.svg?2ldc27#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-reverse:before {
+  content: "\e800";
+}
+.icon-play:before {
+  content: "\e809";
+}
+.icon-pause:before {
+  content: "\e801";
+}
+.icon-stop:before {
+  content: "\e802";
+}
+.icon-to-end:before {
+  content: "\e803";
+}
+.icon-to-start:before {
+  content: "\e804";
+}
+.icon-to-end-alt:before {
+  content: "\e805";
+}
+.icon-to-start-alt:before {
+  content: "\e806";
+}
+.icon-fast-fw:before {
+  content: "\e807";
+}
+.icon-fast-bw:before {
+  content: "\e808";
+}
+.icon-port:before {
+  content: "\e900";
+}
+.icon-ship:before {
+  content: "\e901";
+}
