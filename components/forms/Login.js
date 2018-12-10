@@ -4,7 +4,7 @@ import {
   Form, Icon, Input, Button, Checkbox,
 } from 'antd';
 
-import Styled from './styled/Login';
+// import Styled from './styled/Login';
 
 const FormItem = Form.Item;
 
@@ -21,7 +21,6 @@ class NormalLoginForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Styled>
         <Form onSubmit={this.handleSubmit} className="login-form" style={{maxWidth:300}}>
           <FormItem>
             {getFieldDecorator('userName', {
@@ -51,7 +50,6 @@ class NormalLoginForm extends React.Component {
             Or <a href="">register now!</a>
           </FormItem>
         </Form>
-      </Styled>
     );
   }
 }

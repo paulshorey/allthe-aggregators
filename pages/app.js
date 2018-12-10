@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
   CSS
 */
 import "antd/dist/antd.css";
-import StyledWhatever from './styled/index';
+// import StyledWhatever from './styled/index';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 

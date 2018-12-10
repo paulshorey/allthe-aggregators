@@ -1,4 +1,5 @@
-import styled from 'styled-components';
-export default styled.div`
-	
-`;
+// import styled from 'styled-components';
+// const Styled = styled.div`
+// 	backgrond:yellow;
+// `;
+// export default Styled;

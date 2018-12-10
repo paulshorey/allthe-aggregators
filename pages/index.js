@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
   CSS
 */
 import "antd/dist/antd.css";
-import Styled from './styled/index';
+// import Styled from './styled/index';
 import "./css/index.css";
 
 /*
@@ -24,7 +24,7 @@ const PageLogin = dynamic(() => import("../componentsPages/Login.js"), {
 export default class extends React.Component {
   render() {
     return (
-      <Styled>
+      <React.Fragment>
         <Head>
           <title>AllThe ~ Authenticate</title>
           <meta charSet="utf-8" />
@@ -35,7 +35,7 @@ export default class extends React.Component {
           <script type="text/javascript" src="/static/js/common.js"></script>
         </Head>
         <PageLogin />
-      </Styled>
+      </React.Fragment>
     );
   }
 }
