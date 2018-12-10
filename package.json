@@ -1,36 +1,35 @@
 {
-  "name": "ist-ui",
-  "version": "0.0.1",
-  "description": "",
-  "repository": "git@github.com:paulshorey/allthe-aggregators.git",
-  "main": "index.js",
+  "name": "node-server-cra",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@zeit/next-sass": "^1.0.1",
-    "antd": "^3.11.1",
-    "babel-plugin-styled-components": "^1.9.2",
-    "codemirror": "^5.42.0",
-    "next": "^7.0.2",
     "node-sass": "^4.11.0",
-    "react": "^16.6.1",
-    "react-codemirror2": "^5.1.0",
-    "react-dom": "^16.6.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "styled-components": "^4.1.2"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "onchange": "5.1.0",
     "prettier": "1.15.2"
   },
   "scripts": {
-    "dev": "npm prettier-watch & next",
-    "prod": "next build; next start;",
-    "export": "next build; next export;",
-    "start": "npm install; echo ''; echo 'npm run dev #to run dev environment'; echo 'npm run prod #to build for production and start server'",
-    "prettier-watch": "onchange '**/*.js' -- prettier --print-width 1000000 --write {{changed}}"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "author": "",
-  "license": "ISC"
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
