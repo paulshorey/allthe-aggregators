@@ -1,120 +1,170 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
-} from "react-router-dom";
-
-////////////////////////////////////////////////////////////
-// 1. Click the public page
-// 2. Click the protected page
-// 3. Log in
-// 4. Click the back button, note the URL each time
-
-function AuthExample() {
-  return (
-    <Router>
-      <div>
-        <AuthButton />
-        <ul>
-          <li>
-            <Link to="/public">Public Page</Link>
-          </li>
-          <li>
-            <Link to="/protected">Protected Page</Link>
-          </li>
-        </ul>
-        <Route path="/public" component={Public} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/protected" component={Protected} />
-      </div>
-    </Router>
-  );
-}
-
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    this.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
-
-const AuthButton = withRouter(
-  ({ history }) =>
-    fakeAuth.isAuthenticated ? (
-      <p>
-        Welcome!{" "}
-        <button
-          onClick={() => {
-            fakeAuth.signout(() => history.push("/"));
-          }}
-        >
-          Sign out
-        </button>
-      </p>
-    ) : (
-      <p>You are not logged in.</p>
-    )
-);
-
-function PrivateRoute({ component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        fakeAuth.isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
-
-function Public() {
-  return <h3>Public</h3>;
-}
-
-function Protected() {
-  return <h3>Protected</h3>;
-}
-
-class Login extends React.Component {
-  state = { redirectToReferrer: false };
-
-  login = () => {
-    fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true });
-    });
-  };
-
+/*
+  Components
+*/
+class LoginLogout extends Component {
   render() {
-    let { from } = this.props.location.state || { from: { pathname: "/" } };
-    let { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer) return <Redirect to={from} />;
-
     return (
       <div>
-        <p>You must log in to view the page at {from.pathname}</p>
-        <input type="text" value="" placeholder="Your account UID..." />
-        <button onClick={this.login}>Log in</button>
+        <p>Login/Logout route...</p>
       </div>
+    )
+  }
+}
+class Topic extends Component {
+  render() {
+    // console.log('Topic',this.props);
+    return (
+      <div>
+        <p>What?</p>
+        <p>
+          {this.props.match.params.topicId}
+        </p>
+      </div>
+    )
+  }
+}
+class About extends Component {
+  render() {
+    return (
+      <div>
+        <p>About route...</p>
+        <Route path={`/about/:topicId`} component={Topic}/>
+      </div>
+    )
+  }
+}
+class Aggregators extends Component {
+  render() {
+    console.log('this.props',this.props);
+    return (
+      <div>
+        <p>Aggregators dashboard...</p>
+        <p>{this.props.match.params.action}</p>
+      </div>
+    )
+  }
+}
+class Crawlers extends Component {
+  render() {
+    return (
+      <div>
+        <p>Crawlers dashboard...</p>
+        <p>{this.props.match.params.action}</p>
+      </div>
+    )
+  }
+}
+class Results extends Component {
+  render() {
+    console.log('this.props',this.props);
+    return (
+      <div>
+        <p>Results dashboard...</p>
+        <p>{this.props.match.params.action}</p>
+      </div>
+    )
+  }
+}
+
+/*
+	App
+*/
+class App extends Component {
+  componentDidMount(){
+    document.body.classList.add('mapLoading');
+  }
+  render() {
+    return (
+      <Router>
+        <Provider store={redux_store}>
+          <div className="dash">
+            <div className="dash-sidenav">
+              
+              <ul>
+                <li>
+                  <Link to="/">Login/Logout</Link>
+                </li>
+              </ul>
+              
+              <ul>
+                <li>
+                  <Link to="/about">About</Link>
+                  <ul>
+                    <li>
+                      <Link to="/about/one">:one</Link>
+                    </li>
+                    <li>
+                      <Link to="/about/two">:two</Link>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              
+              <ul>
+                <li>
+                  <Link to="/aggregators">Aggregators</Link>
+                  <ul>
+                    <li>
+                      <Link to="/aggregators/list">:list</Link>
+                    </li>
+                    <li>
+                      <Link to="/aggregators/add">:add</Link>
+                    </li>
+                    <li>
+                      <Link to="/aggregators/edit">:edit</Link>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              
+              <ul>
+                <li>
+                  <Link to="/crawlers">Crawlers</Link>
+                  <ul>
+                    <li>
+                      <Link to="/crawlers/list">:list</Link>
+                    </li>
+                    <li>
+                      <Link to="/crawlers/add">:add</Link>
+                    </li>
+                    <li>
+                      <Link to="/crawlers/edit">:edit</Link>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              
+              <ul>
+                <li>
+                  <Link to="/results">Results</Link>
+                  <ul>
+                    <li>
+                      <Link to="/results/list">:list</Link>
+                    </li>
+                    <li>
+                      <Link to="/results/add">:add</Link>
+                    </li>
+                    <li>
+                      <Link to="/results/edit">:edit</Link>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+            </div>
+            <div className="dash-content">
+              <Route path="/about" component={About} />
+              <Route path="/aggregators/:action/:uid?" component={Aggregators} />
+              <Route path="/crawlers/:action/:uid?" component={Crawlers} />
+              <Route path="/results/:action/:uid?" component={Results} />
+              <Route path="/login" component={LoginLogout} />
+              <Route path="/logout" component={LoginLogout} />
+              <Route path="/" exact component={LoginLogout} />
+              <Route component={LoginLogout} />
+            </div>
+          </div>
+        </Provider>
+      </Router>
     );
   }
 }
-
-export default AuthExample;
