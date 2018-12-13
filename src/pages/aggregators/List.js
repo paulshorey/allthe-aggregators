@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-export default class Account extends Component {
+export default class extends Component {
   render() {
     return (
       <div>
-        <p>Logout sub-route...</p>
+        <p>List sub-route...</p>
       </div>
     )
   }
