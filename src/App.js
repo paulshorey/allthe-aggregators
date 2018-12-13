@@ -1,11 +1,26 @@
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
+import RouteAccount from './routes/Account';
+import RouteAuth from './routes/Auth';
+
 /*
   Components
 */
-class LoginLogout extends Component {
+class NotFound extends Component {
   render() {
     return (
       <div>
-        <p>Login/Logout route...</p>
+        <p>NotFound route...</p>
+      </div>
+    )
+  }
+}
+class Home extends Component {
+  render() {
+    return (
+      <div>
+        <p>Home route...</p>
       </div>
     )
   }
@@ -69,20 +84,38 @@ class Results extends Component {
 /*
 	App
 */
-class App extends Component {
+export default class App extends Component {
   componentDidMount(){
     document.body.classList.add('mapLoading');
   }
   render() {
     return (
       <Router>
-        <Provider store={redux_store}>
           <div className="dash">
             <div className="dash-sidenav">
               
               <ul>
                 <li>
-                  <Link to="/">Login/Logout</Link>
+                  <Link to="/">Home</Link>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <Link to="/account">My Account</Link>
+                  <ul>
+                    <li>
+                      <Link to="/account/login">Login</Link>
+                    </li>
+                    <li>
+                      <Link to="/account/logout">Logout</Link>
+                    </li>
+                    <li>
+                      <Link to="/account/register">Register</Link>
+                    </li>
+                    <li>
+                      <Link to="/account/password">Change Password</Link>
+                    </li>
+                  </ul>
                 </li>
               </ul>
               
@@ -153,17 +186,18 @@ class App extends Component {
 
             </div>
             <div className="dash-content">
-              <Route path="/about" component={About} />
-              <Route path="/aggregators/:action/:uid?" component={Aggregators} />
-              <Route path="/crawlers/:action/:uid?" component={Crawlers} />
-              <Route path="/results/:action/:uid?" component={Results} />
-              <Route path="/login" component={LoginLogout} />
-              <Route path="/logout" component={LoginLogout} />
-              <Route path="/" exact component={LoginLogout} />
-              <Route component={LoginLogout} />
+              <Switch>
+                <Route path="/about" component={About} />
+                <Route path="/aggregators/:action?/:uid?" component={Aggregators} />
+                <Route path="/crawlers/:action?/:uid?" component={Crawlers} />
+                <Route path="/results/:action?/:uid?" component={Results} />
+                <Route path="/account" component={RouteAccount} />
+                <Route path="/auth" component={RouteAuth} />
+                <Route path="/" exact component={Home} />
+                <Route component={NotFound} />
+              </Switch>
             </div>
           </div>
-        </Provider>
       </Router>
     );
   }
