@@ -3,7 +3,7 @@
   STATE:
 */
 const oldState = {
-  loggedIn: false
+  user: {}
 };
 const ThisReducer = (state = oldState, action) => {
   var newState = window.deepCopy(state);
@@ -14,7 +14,7 @@ const ThisReducer = (state = oldState, action) => {
   switch (action.type) {
 
     case "RX_LOGIN":
-      newState.loggedIn = true;
+      newState.user = action.data;
     break;
 
   }

@@ -7,7 +7,9 @@ class ThisComponent extends React.Component {
       <div>
         <p>Login</p>
         <p onClick={()=>{ 
-        	this.props.dispatch(this.props.actions.RX_LOGIN());
+        	
+          this.props.dispatch(this.props.actions.RX_LOGIN());
+
         }}>
         	Click me
         </p>
