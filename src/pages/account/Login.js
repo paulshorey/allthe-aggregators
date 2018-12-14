@@ -4,7 +4,7 @@ export default class Account extends Component {
   render() {
     return (
       <div>
-        <p>Login sub-route...</p>
+        <p>Login</p>
       </div>
     )
   }

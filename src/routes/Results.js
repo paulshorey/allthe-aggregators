@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import Async from 'react-code-splitting';
 
 /*
@@ -29,6 +29,32 @@ var routes = [
 /*
 	App
 */
+export const routeData = {
+  url: "/results",
+  linkTitle: "Results"
+};
+export class LinkComponent extends Component {
+  render() {
+    return (
+      <ul>
+        <li>
+          <Link to={routeData.url}>{routeData.linkTitle}</Link>
+          <ul>
+            <li>
+              <Link to={routeData.url+"/list"}>List</Link>
+            </li>
+            <li>
+              <Link to={routeData.url+"/add"}>Add</Link>
+            </li>
+            <li>
+              <Link to={routeData.url+"/edit/test"}>Edit</Link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    );
+  }
+}
 export default class extends Component {
   render() {
     var Routes = [];
@@ -44,14 +70,11 @@ export default class extends Component {
       />);
     });
     return (
-	    <div className="dash-content">
-	    	<p>Aggregators route...</p>
-	      <Switch>
-	        {Routes}
-          <Redirect from="/results/edit" to="/results/add" />
-          <Redirect from="/results" to="/results/list" />
-	      </Switch>
-	    </div>
+      <Switch>
+        {Routes}
+        <Redirect from="/results/edit" to="/results/add" />
+        <Redirect from="/results" to="/results/list" />
+      </Switch>
     );
   }
 }

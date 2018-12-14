@@ -36,12 +36,31 @@ var routes = [
 	App
 */
 export const routeData = {
-  test: "2"
+  url: "/account",
+  linkTitle: "Account"
 };
 export class LinkComponent extends Component {
   render() {
     return (
-      <ul><li>test{/*<Link to={this.props.route.url}>{this.props.route.url}</Link>*/}</li></ul>
+      <ul>
+        <li>
+          <Link to={routeData.url}>{routeData.linkTitle}</Link>
+          <ul>
+            <li>
+              <Link to={routeData.url+"/login"}>Login</Link>
+            </li>
+            <li>
+              <Link to={routeData.url+"/logout"}>Logout</Link>
+            </li>
+            <li>
+              <Link to={routeData.url+"/register"}>Register</Link>
+            </li>
+            <li>
+              <Link to={routeData.url+"/password"}>Password</Link>
+            </li>
+          </ul>
+        </li>
+      </ul>
     );
   }
 }
@@ -60,15 +79,12 @@ export default class extends Component {
       />);
     });
     return (
-	    <div className="dash-content">
-	    	<p>Account route...</p>
-	      <Switch>
-          <Redirect from="/account/logout" to="/account/login" />
-          <Redirect from="/login" to="/account/login" />
-          <Redirect from="/logout" to="/account/login" />
-	        {Routes}
-	      </Switch>
-	    </div>
+      <Switch>
+        <Redirect from="/account/logout" to="/account/login" />
+        <Redirect from="/login" to="/account/login" />
+        <Redirect from="/logout" to="/account/login" />
+        {Routes}
+      </Switch>
     );
   }
 }

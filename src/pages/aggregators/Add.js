@@ -5,7 +5,7 @@ export default class extends Component {
   	console.log('Add.js',this.props);
     return (
       <div>
-        <p>Add sub-route...</p>
+        <p>Add</p>
       </div>
     )
   }

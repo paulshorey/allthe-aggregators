@@ -4,7 +4,7 @@ export default class extends Component {
   render() {
     return (
       <div>
-        <p>List sub-route...</p>
+        <p>List</p>
       </div>
     )
   }

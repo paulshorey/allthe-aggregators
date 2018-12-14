@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import "./scripts/css/index.scss";
+import "src/scripts/css/index.scss";
 
 /*
 	Connect Redux (global state)
 */
 import { Provider } from "react-redux";
-import redux_store from "./redux/store";
+import redux_store from "src/redux/store";
 
 /*
 	App
 */
-import LayoutAndRoutes from "./LayoutAndRoutes";
+import LayoutAndRoutes from "src/LayoutAndRoutes";
 
 /*
 	Routes

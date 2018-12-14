@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import Async from 'react-code-splitting';
 
 /*
@@ -30,6 +30,29 @@ var routes = [
 /*
 	App
 */
+export const routeData = {
+  url: "/about",
+  linkTitle: "About"
+};
+export class LinkComponent extends Component {
+  render() {
+    return (
+      <ul>
+        <li>
+          <Link to={routeData.url}>{routeData.linkTitle}</Link>
+          <ul>
+            <li>
+              <Link to={routeData.url+"/page1"}>Page 1</Link>
+            </li>
+            <li>
+              <Link to={routeData.url+"/page2"}>Page 2</Link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    );
+  }
+}
 export default class extends Component {
   render() {
     var Routes = [];
@@ -45,13 +68,10 @@ export default class extends Component {
       />);
     });
     return (
-	    <div className="dash-content">
-	    	<p>About route...</p>
-	      <Switch>
-	        {Routes}
-          <Redirect from="/about" to="/" />
-	      </Switch>
-	    </div>
+      <Switch>
+        {Routes}
+        <Redirect from="/about" to="/" />
+      </Switch>
     );
   }
 }

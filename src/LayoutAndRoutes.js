@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Async from 'react-code-splitting';
+import NotFound from "src/pages/NotFound";
 
 /*
   Routes
@@ -18,38 +19,13 @@ var getRouteModule = function(whatComponent){
     }
   }
 }
-// var routes = [
-//   {
-//     url: "/aggregators",
-//     component: getRouteModule('Aggregators')
-//   },
-//   {
-//     url: "/crawlers",
-//     component: getRouteModule('Crawlers')
-//   },
-//   {
-//     url: "/results",
-//     component: getRouteModule('Results')
-//   },
-//   {
-//     url: "/account",
-//     component: getRouteModule('Account')
-//   },
-//   {
-//     url: "/about",
-//     component: getRouteModule('About')
-//   },
-//   {
-//     exact: true,
-//     url: "/",
-//     component: getRouteModule('Root')
-//   },
-//   {
-//     component: getRouteModule('NotFound')
-//   },
-// ];
 var routes = [
-  getRouteModule('Account')
+  getRouteModule('Aggregators'),
+  getRouteModule('Crawlers'),
+  getRouteModule('Results'),
+  getRouteModule('Account'),
+  getRouteModule('About'),
+  getRouteModule('Root')
 ];
 
 /*
@@ -62,6 +38,7 @@ export default class extends Component {
     routes.forEach((routeModule, index) => {
       // unpack module
       var rM = routeModule();
+      console.log(index, rM);
       // create <Route />s
       Routes.push(<Route 
         key={"Route"+index}
@@ -73,7 +50,7 @@ export default class extends Component {
       />);
       // create <Link />s
       Links.push(
-        <rM.LinkComponent key={"link"+index} routeData={rM.routeData} />
+        <rM.LinkComponent key={"link"+index} />
       );
     });
     return (
@@ -85,6 +62,7 @@ export default class extends Component {
             <div className="dash-content">
               <Switch>
                 {Routes}
+                <Route component={NotFound} />
               </Switch>
             </div>
           </div>

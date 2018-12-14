@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-export default class NotFound extends Component {
+export default class extends Component {
   render() {
     return (
       <div>
-        <p>NotFound route...</p>
+        <p>Home...</p>
       </div>
     )
   }
