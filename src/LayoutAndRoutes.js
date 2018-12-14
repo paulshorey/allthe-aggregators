@@ -60,8 +60,8 @@ export default class extends Component {
     });
     return (
       <Router>
-          <div className="dash">
-            <div className="dash-sidenav">
+          <div className="dashboard">
+            <div className="--sidenav">
               {NavSections["/"]}
               {NavSections["/about"]}
               {NavSections["/aggregators"]}
@@ -69,7 +69,7 @@ export default class extends Component {
               {NavSections["/results"]}
               {NavSections["/account"]}
             </div>
-            <div className="dash-content">
+            <div className="--content">
               <Switch>
                 {PageRoutes}
               </Switch>

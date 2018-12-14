@@ -13,15 +13,15 @@ code {
     monospace;
 }
 
-.dash {
+.dashboard {
 	display:flex;
 	height:100vh;
 	width:100vh;
-	.dash-sidenav {
+	.--sidenav {
 		box-shadow: 0 0 0.5rem black;
 		padding: 0 2rem;
 	}
-	.dash-content {
+	.--content {
 		padding: 0 2rem;
 	}
 }
