@@ -55,7 +55,7 @@ export default class extends Component {
       <Router>
           <div className="dash">
             <div className="dash-sidenav">
-              {Links}
+              {Links.reverse()}
             </div>
             <div className="dash-content">
               <Switch>
