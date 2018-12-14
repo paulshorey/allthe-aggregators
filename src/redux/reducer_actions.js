@@ -20,7 +20,6 @@ const oldState = {
   ...actions
 };
 const ThisReducer = (state = oldState, action) => {
-  console.log('ThisReducer state',state);
   return state;
 };
 

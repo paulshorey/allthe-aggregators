@@ -7,6 +7,8 @@ import NotFound from "src/pages/NotFound";
   Routes
 */
 var getRouteModule = function(whatComponent){
+  // we will call the function later, when the user requests the route
+  // this may not actually be working right now... need to look into this
   return function(){
     // webpack can not require() a fully variable path:
     var exported = require('./routes/'+whatComponent+'.js');
@@ -18,6 +20,9 @@ var getRouteModule = function(whatComponent){
     }
   }
 }
+// choose routes to use
+// more specific routes first. Home (url=='/') should be last. 
+// routes with NO url, like NotFound, very last.
 var routes = [
   getRouteModule('Aggregators'),
   getRouteModule('Crawlers'),
@@ -33,11 +38,13 @@ var routes = [
 export default class extends Component {
   render() {
     var Routes = [];
-    var Links = [];
+    var RouteLinks = {};
     routes.forEach((routeModule, index) => {
+      //
       // unpack module
       var rM = routeModule();
-      // create <Route />s
+      //
+      // add <Route />
       Routes.push(<Route 
         key={"Route"+index}
         exact={rM.routeData.exact}
@@ -46,16 +53,20 @@ export default class extends Component {
           return <rM.RouteComponent {...props} />;
         }}
       />);
-      // create <Link />s
-      Links.push(
-        <rM.LinkComponent key={"link"+index} />
-      );
+      //
+      // add <Link />
+      RouteLinks[rM.routeData.url] = <rM.LinkComponent key={"link"+index} />;
     });
     return (
       <Router>
           <div className="dash">
             <div className="dash-sidenav">
-              {Links.reverse()}
+              {RouteLinks["/"]}
+              {RouteLinks["/about"]}
+              {RouteLinks["/aggregators"]}
+              {RouteLinks["/crawlers"]}
+              {RouteLinks["/results"]}
+              {RouteLinks["/account"]}
             </div>
             <div className="dash-content">
               <Switch>

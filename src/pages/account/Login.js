@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 class ThisComponent extends React.Component {
   render() {
-    console.log('Login Component props',this.props);
     return (
       <div>
         <p>Login</p>
