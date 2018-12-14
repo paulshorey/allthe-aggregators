@@ -29,23 +29,24 @@ var routes = [
   getRouteModule('Results'),
   getRouteModule('Account'),
   getRouteModule('About'),
-  getRouteModule('Root')
+  getRouteModule('Root'),
+  getRouteModule('Error')
 ];
 
 /*
-	App
+	Layout
 */
 export default class extends Component {
   render() {
-    var Routes = [];
-    var RouteLinks = {};
+    var PageRoutes = [];
+    var NavSections = {};
     routes.forEach((routeModule, index) => {
       //
       // unpack module
       var rM = routeModule();
       //
       // add <Route />
-      Routes.push(<Route 
+      PageRoutes.push(<Route 
         key={"Route"+index}
         exact={rM.routeData.exact}
         path={rM.routeData.url}
@@ -55,23 +56,22 @@ export default class extends Component {
       />);
       //
       // add <Link />
-      RouteLinks[rM.routeData.url] = <rM.LinkComponent key={"link"+index} />;
+      NavSections[rM.routeData.url] = <rM.LinkComponent key={"link"+index} />;
     });
     return (
       <Router>
           <div className="dash">
             <div className="dash-sidenav">
-              {RouteLinks["/"]}
-              {RouteLinks["/about"]}
-              {RouteLinks["/aggregators"]}
-              {RouteLinks["/crawlers"]}
-              {RouteLinks["/results"]}
-              {RouteLinks["/account"]}
+              {NavSections["/"]}
+              {NavSections["/about"]}
+              {NavSections["/aggregators"]}
+              {NavSections["/crawlers"]}
+              {NavSections["/results"]}
+              {NavSections["/account"]}
             </div>
             <div className="dash-content">
               <Switch>
-                {Routes}
-                <Route component={NotFound} />
+                {PageRoutes}
               </Switch>
             </div>
           </div>
