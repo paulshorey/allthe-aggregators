@@ -19,15 +19,8 @@ var routes = [
 export const routeData = {
   exact: true,
   url: "/",
-  linkTitle: "Home"
+  title: "Home"
 };
-export class LinkComponent extends Component {
-  render() {
-    return (
-      <ul><li><Link to={routeData.url}>{routeData.linkTitle}</Link></li></ul>
-    );
-  }
-}
 export default class extends Component {
   render() {
     var route = routes[0];

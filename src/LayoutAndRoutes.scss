@@ -1,0 +1,49 @@
+/*
+  LAYOUT
+  (margin, padding, width, height, display, position... anything that affects surrounding elements)
+*/
+.LayoutAndRoutes {
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  width:100vw;
+  .--head {
+    display:flex;
+    flex-direction:row;
+  }
+  .--body {
+    display:flex;
+    flex-direction:row;
+    flex-grow:1;
+    .--side {
+      padding: 0 2rem;
+    }
+    .--main {
+      padding: 0 2rem;
+      flex-grow:1;
+    }
+  }
+}
+
+/*
+  STYLE
+  (colors, fonts, shadows... things that do not affect position of other elements)
+*/
+a {
+  color:cadetblue;
+}
+.LayoutAndRoutes {
+  .--head {
+    background:#111;
+    color:#fff;
+    a {
+      color:lightblue;
+    }
+  }
+  .--side {
+    box-shadow: 0 0 0.5rem black;
+    ul {
+      padding-left: 0;
+    }
+  }
+}

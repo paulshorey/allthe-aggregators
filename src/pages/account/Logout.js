@@ -4,23 +4,24 @@ import { Redirect } from 'react-router-dom';
 import LoginForm from 'src/components/form/Login';
 
 class ThisComponent extends React.Component {
+  componentWillMount(){
+    this.props.dispatch(this.props.actions.RX_LOGOUT());
+  }
   render() {
     return (
       !this.props.account.data._id
       ?
-      <div>
-        <p>Login</p>
-        <LoginForm />
-      </div>
+      <Redirect to="/login" />
       :
-      <Redirect to="/account" />
+      <p>Logging out...</p>
     )
   }
 }
 
 const mapStateToProps = function(state) {
   return {
-    account: state.account
+    account: state.account,
+    actions: state.actions
   }
 }
 export default connect(mapStateToProps)(ThisComponent);

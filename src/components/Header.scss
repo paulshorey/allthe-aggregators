@@ -1,0 +1,25 @@
+/*
+  LAYOUT
+  (margin, padding, width, height, display, position... anything that affects surrounding elements)
+*/
+.Header {
+  
+  padding:1rem;
+  
+  .--logo {
+    padding-right:1rem;
+  }
+  
+  .--links {
+    flex-grow:1;
+    text-align:right;
+  }
+
+}
+
+
+/*
+  STYLE
+  (colors, fonts, shadows... things that do not affect position of other elements)
+*/
+

@@ -30,20 +30,30 @@ function postData(url = ``, data = {}) {
 export const RX_LOGIN = function(userData) {
   return function(dispatch, getState) {
 
-  	// Request
-  	postData('http://localhost:1080/auth/login', userData)
+    // Request
+    postData('http://localhost:1080/auth/login', userData)
     .then((response) => {
-    	// Success
-	    dispatch({
-	      type: "RX_LOGIN",
-	      data: response.data.user
-	    });
+        // Success
+        dispatch({
+          type: "RX_LOGIN",
+          data: response.data.user
+        });
 
     })
     .catch((err)=> {
-    	// Error
-    	console.warn(err);
+        // Error
+        console.warn(err);
     })
+
+  };
+}
+export const RX_LOGOUT = function(userData) {
+  return function(dispatch, getState) {
+
+    dispatch({
+      type: "RX_LOGIN",
+      data: {}
+    });
 
   };
 }

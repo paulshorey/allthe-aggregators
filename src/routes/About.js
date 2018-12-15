@@ -31,28 +31,19 @@ var routes = [
 	App
 */
 export const routeData = {
+  title: "About",
   url: "/about",
-  linkTitle: "About"
+  subRoutes: [
+    {
+      title: "Page 1",
+      url: "/about/page1",
+    },
+    {
+      title: "Page 2",
+      url: "/about/page2",
+    }
+  ]
 };
-export class LinkComponent extends Component {
-  render() {
-    return (
-      <ul>
-        <li>
-          <Link to={routeData.url}>{routeData.linkTitle}</Link>
-          <ul>
-            <li>
-              <Link to={routeData.url+"/page1"}>Page 1</Link>
-            </li>
-            <li>
-              <Link to={routeData.url+"/page2"}>Page 2</Link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    );
-  }
-}
 export default class extends Component {
   render() {
     var Routes = [];

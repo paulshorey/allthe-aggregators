@@ -11,13 +11,6 @@ import NotFound from 'src/pages/NotFound';
 */
 export const routeData = {
 };
-export class LinkComponent extends Component {
-  render() {
-    return (
-      null
-    );
-  }
-}
 export default class extends Component {
   render() {
     return (

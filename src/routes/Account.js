@@ -13,6 +13,12 @@ var routes = [
     },
   },
   {
+    url: "/account/logout",
+    component: function() {
+      return require('src/pages/account/Logout').default;
+    },
+  },
+  {
     url: "/account/register",
     component: function() {
       return require('src/pages/account/Register').default;
@@ -36,34 +42,29 @@ var routes = [
 	App
 */
 export const routeData = {
+  title: "Account",
   url: "/account",
-  linkTitle: "Account"
+  subRoutes: [
+    {
+      title: "Login",
+      url: "/account/login",
+    },
+    {
+      title: "Logout",
+      url: "/account/logout",
+      auth: true,
+    },
+    {
+      title: "Register",
+      url: "/account/register",
+    },
+    {
+      title: "Password",
+      url: "/account/password",
+      auth: true,
+    }
+  ]
 };
-export class LinkComponent extends Component {
-  render() {
-    return (
-      <ul>
-        <li>
-          <Link to={routeData.url}>{routeData.linkTitle}</Link>
-          <ul>
-            <li>
-              <Link to={routeData.url+"/login"}>Login</Link>
-            </li>
-            <li>
-              <Link to={routeData.url+"/logout"}>Logout</Link>
-            </li>
-            <li>
-              <Link to={routeData.url+"/register"}>Register</Link>
-            </li>
-            <li>
-              <Link to={routeData.url+"/password"}>Password</Link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    );
-  }
-}
 export default class extends Component {
   render() {
     var Routes = [];
@@ -80,9 +81,6 @@ export default class extends Component {
     });
     return (
       <Switch>
-        <Redirect from="/account/logout" to="/account/login" />
-        <Redirect from="/login" to="/account/login" />
-        <Redirect from="/logout" to="/account/login" />
         {Routes}
       </Switch>
     );

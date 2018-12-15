@@ -30,8 +30,23 @@ var routes = [
 	App
 */
 export const routeData = {
+  title: "Aggregators",
   url: "/aggregators",
-  linkTitle: "Aggregators"
+  auth: true,
+  subRoutes: [
+    {
+      title: "List",
+      url: "/aggregators/list",
+    },
+    {
+      title: "Add",
+      url: "/aggregators/add",
+    },
+    {
+      title: "Edit",
+      url: "/aggregators/edit/test",
+    }
+  ]
 };
 export class LinkComponent extends Component {
   render() {

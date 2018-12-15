@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import "src/scripts/css/index.scss";
+import { BrowserRouter as Router, Route, Redirect, Link, Switch } from 'react-router-dom';
+
+/*
+	CSS, JS
+*/
+import "./index.scss";
 
 /*
 	Connect Redux (global state)
@@ -18,6 +23,8 @@ import LayoutAndRoutes from "src/LayoutAndRoutes";
 */
 ReactDOM.render(
 	<Provider store={rx_store}>
-		<LayoutAndRoutes />
+		<Router>
+			<Route component={LayoutAndRoutes} />
+		</Router>
 	</Provider>
 , document.getElementById('App'));

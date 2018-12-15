@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import Async from 'react-code-splitting';
+import { BrowserRouter as Router, Route, Redirect, Link, Switch } from 'react-router-dom';
 import NotFound from "src/pages/NotFound";
+import Header from "src/components/Header";
+import NavList from "src/components/NavList";
+import './LayoutAndRoutes.scss';
 
 /*
   Routes
@@ -15,8 +17,7 @@ var getRouteModule = function(whatComponent){
     // return imported components for later use
     return {
       routeData: exported.routeData,
-      RouteComponent: exported.default,
-      LinkComponent: exported.LinkComponent
+      RouteComponent: exported.default
     }
   }
 }
@@ -38,15 +39,16 @@ var routes = [
 */
 export default class extends Component {
   render() {
-    var PageRoutes = [];
-    var NavSections = {};
+    console.log('Layout',this.props);
+    var AllRoutes = [];
+    var NavLists = {};
     routes.forEach((routeModule, index) => {
       //
       // unpack module
       var rM = routeModule();
       //
       // add <Route />
-      PageRoutes.push(<Route 
+      AllRoutes.push(<Route 
         key={"Route"+index}
         exact={rM.routeData.exact}
         path={rM.routeData.url}
@@ -56,26 +58,31 @@ export default class extends Component {
       />);
       //
       // add <Link />
-      NavSections[rM.routeData.url] = <rM.LinkComponent key={"link"+index} />;
+      if (rM.routeData.url) {
+        NavLists[rM.routeData.url] = <NavList data={rM.routeData} {...this.props} />;
+      }
     });
     return (
-      <Router>
-          <div className="dashboard">
-            <div className="--sidenav">
-              {NavSections["/"]}
-              {NavSections["/about"]}
-              {NavSections["/aggregators"]}
-              {NavSections["/crawlers"]}
-              {NavSections["/results"]}
-              {NavSections["/account"]}
-            </div>
-            <div className="--content">
-              <Switch>
-                {PageRoutes}
-              </Switch>
-            </div>
+      <div className="--layout LayoutAndRoutes">
+        <Header className="--head" />
+        <div className="--body">
+          <div className="--side">
+            {NavLists["/"]}
+            {NavLists["/about"]}
+            {NavLists["/aggregators"]}
+            {NavLists["/crawlers"]}
+            {NavLists["/results"]}
+            {NavLists["/account"]}
           </div>
-      </Router>
+          <div className="--main">
+            <Switch>
+              <Redirect from="/login" exact to="/account/login" />
+              <Redirect from="/logout" exact to="/account/login" />
+              {AllRoutes}
+            </Switch>
+          </div>
+        </div>
+      </div>
     );
   }
 }
