@@ -9,6 +9,10 @@ class ThisComponent extends Component {
       ?
       <div>
         <p>MyAccount</p>
+        <ul>
+          <li>{this.props.account.data._id}</li>
+          <li>{this.props.account.data.email}</li>
+        </ul>
       </div>
       :
       <Redirect to="/login" />

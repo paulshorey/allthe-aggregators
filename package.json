@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.10.0",
+    "@blueprintjs/datetime": "^3.5.0",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-code-splitting": "^1.2.1",

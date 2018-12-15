@@ -1,21 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { Position, Toaster } from "@blueprintjs/core";
-const AppToaster = Toaster.create({
-    className: "recipe-toaster",
-    position: Position.TOP,
-});
-
-
-
-
-class LoginForms extends React.Component {
+class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "ps@artspaces.net",
-      password: "demo"
+      email: "",
+      password: ""
     }
   }
   render() {
@@ -59,4 +50,4 @@ const mapStateToProps = function(state) {
     actions: state.actions
   }
 }
-export default connect(mapStateToProps)(LoginForms);
+export default connect(mapStateToProps)(RegisterForm);

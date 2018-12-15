@@ -48,20 +48,17 @@ export const routeData = {
     {
       title: "Login",
       url: "/account/login",
+      loggedIn: false,
     },
     {
       title: "Logout",
       url: "/account/logout",
-      auth: true,
+      loggedIn: true,
     },
     {
       title: "Register",
       url: "/account/register",
-    },
-    {
-      title: "Password",
-      url: "/account/password",
-      auth: true,
+      loggedIn: false,
     }
   ]
 };

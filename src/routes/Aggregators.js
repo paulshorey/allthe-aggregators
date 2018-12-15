@@ -32,7 +32,7 @@ var routes = [
 export const routeData = {
   title: "Aggregators",
   url: "/aggregators",
-  auth: true,
+  loggedIn: true,
   subRoutes: [
     {
       title: "List",

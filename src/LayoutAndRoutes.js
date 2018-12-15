@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Link, Switch } from 'react-router-dom';
 import NotFound from "src/pages/NotFound";
 import Header from "src/components/Header";
@@ -37,8 +38,9 @@ var routes = [
 /*
 	Layout
 */
-export default class extends Component {
+class ThisComponent extends Component {
   render() {
+    console.log('Layout',this.props);
     var AllRoutes = [];
     var NavLists = {};
     routes.forEach((routeModule, index) => {
@@ -46,20 +48,24 @@ export default class extends Component {
       // unpack module
       var rM = routeModule();
       //
-      // add <Route />
-      AllRoutes.push(<Route 
-        key={"Route"+index}
-        exact={rM.routeData.exact}
-        path={rM.routeData.url}
-        render={(props) => {
-          return <rM.RouteComponent {...props} />;
-        }}
-      />);
-      //
-      // add <Link />
-      if (rM.routeData.url) {
-        NavLists[rM.routeData.url] = <NavList data={rM.routeData} {...this.props} />;
-      }
+      // security
+      // if (rM.routeData.auth) {
+        //
+        // add <Route />
+        AllRoutes.push(<Route 
+          key={"Route"+index}
+          exact={rM.routeData.exact}
+          path={rM.routeData.url}
+          render={(props) => {
+            return <rM.RouteComponent {...props} />;
+          }}
+        />);
+        //
+        // add <Link />
+        if (rM.routeData.url) {
+          NavLists[rM.routeData.url] = <NavList data={rM.routeData} {...this.props} />;
+        }
+      // }
     });
     return (
       <div className="--layout LayoutAndRoutes">
@@ -85,3 +91,10 @@ export default class extends Component {
     );
   }
 }
+
+const mapStateToProps = function(state) {
+  return {
+    account: state.account
+  }
+}
+export default connect(mapStateToProps)(ThisComponent);

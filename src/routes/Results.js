@@ -32,7 +32,7 @@ var routes = [
 export const routeData = {
   title: "Results",
   url: "/results",
-  auth: true,
+  loggedIn: true,
   subRoutes: [
     {
       title: "List",

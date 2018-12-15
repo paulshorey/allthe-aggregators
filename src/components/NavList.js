@@ -16,9 +16,6 @@ class ThisComponent extends React.Component {
           selectedOpened += " opened ";
         }
       }
-      console.log('link.url',link.url);
-      console.log('this.props.location.pathname',this.props.location.pathname);
-      console.log('link.subRoutes',link.subRoutes);
       if (link.subRoutes) {
         let subRoutesMatached = link.subRoutes.filter((link) => { console.warn(link.url); return (link.url == this.props.location.pathname) });
         if (subRoutesMatached.length) {
@@ -27,7 +24,11 @@ class ThisComponent extends React.Component {
       }
       // render
       return (
-        (!link.auth || this.props.account.data._id)
+        (
+          (link.loggedIn === undefined)  ||  // link must be public, or user must be logged in
+          (link.loggedIn === true && this.props.account.data._id) ||
+          (link.loggedIn === false && !this.props.account.data._id)
+        )
         ?
         <li key={link.url} className={selectedOpened}>
           <Link to={link.url}>{link.title}</Link>
@@ -61,7 +62,11 @@ class ThisComponent extends React.Component {
       (
         (this.props.data && this.props.data.url) // must have data and url (otherwise it may be an Error route which doesn't have a <Link />)
         && 
-        (!this.props.data.auth || this.props.account.data._id) // link must be public, or user must be logged in
+        (
+          (this.props.data.loggedIn === undefined)  ||  // link must be public, or user must be logged in
+          (this.props.data.loggedIn === true && this.props.account.data._id) ||
+          (this.props.data.loggedIn === false && !this.props.account.data._id)
+        )
       )
       ?
       // success, render
