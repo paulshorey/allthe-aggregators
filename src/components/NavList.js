@@ -8,10 +8,28 @@ class ThisComponent extends React.Component {
 
     // helper function to build SubRoutes[] (first), and Route[] (last)
     var NavLink = (link) => {
+      // list item selected || open the list if child is selected || keep children collapsed and do not select
+      let selectedOpened = "";
+      if (link.url == this.props.location.pathname) {
+        selectedOpened += " selected ";
+        if (link.subRoutes) {
+          selectedOpened += " opened ";
+        }
+      }
+      console.log('link.url',link.url);
+      console.log('this.props.location.pathname',this.props.location.pathname);
+      console.log('link.subRoutes',link.subRoutes);
+      if (link.subRoutes) {
+        let subRoutesMatached = link.subRoutes.filter((link) => { console.warn(link.url); return (link.url == this.props.location.pathname) });
+        if (subRoutesMatached.length) {
+          selectedOpened += " opened ";
+        }
+      }
+      // render
       return (
         (!link.auth || this.props.account.data._id)
         ?
-        <li className={(link.url == this.props.location.pathname) ? "selected " : ""}>
+        <li key={link.url} className={selectedOpened}>
           <Link to={link.url}>{link.title}</Link>
           {SubRoutes}
         </li>
@@ -33,7 +51,7 @@ class ThisComponent extends React.Component {
 
     // THEN, after child routes, render primary route
     var Route = (
-      <ul>
+      <ul className="NavList">
         {NavLink(this.props.data)}
       </ul>
     );

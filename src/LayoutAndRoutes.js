@@ -39,7 +39,6 @@ var routes = [
 */
 export default class extends Component {
   render() {
-    console.log('Layout',this.props);
     var AllRoutes = [];
     var NavLists = {};
     routes.forEach((routeModule, index) => {

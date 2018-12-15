@@ -8,11 +8,11 @@ class ThisComponent extends React.Component {
     var TopLinks = [];
     if (this.props.account.data._id) {
       // logged in links
-      TopLinks.push(<span>_id:{this.props.account.data._id}</span>);
-      TopLinks.push(<span>email:{this.props.account.data.email}</span>);
+      TopLinks.push(<span key={"asdfs"}>_id:{this.props.account.data._id}</span>);
+      TopLinks.push(<span key={"asdfw"}>email:{this.props.account.data.email}</span>);
     } else {
       // logged out links
-      TopLinks.push(<span><Link to={"/login"}>Login</Link></span>);
+      TopLinks.push(<span key={"asdfl"}><Link to={"/login"}>Login</Link></span>);
     }
     return (
       <div className={this.props.className + " Header"}>

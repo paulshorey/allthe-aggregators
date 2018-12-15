@@ -1,0 +1,25 @@
+ul.NavList {
+	padding-left: 0;
+	margin-left: 0;
+	list-style: none;
+	> li,
+	> li ul,
+	> li ul li {
+		margin-left: 0;
+		padding-left: 0;
+		list-style: none;
+	}
+	> li ul {
+		display:none;
+		margin-left: 1rem;
+	}
+	> li.opened ul {
+		display:block;
+	}
+	li.selected > a {
+		font-weight:bold;
+	}
+	li ul li {
+		margin: 0.5rem 0;
+	}
+}

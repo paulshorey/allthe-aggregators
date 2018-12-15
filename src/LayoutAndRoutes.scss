@@ -16,10 +16,10 @@
     flex-direction:row;
     flex-grow:1;
     .--side {
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
     .--main {
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       flex-grow:1;
     }
   }
@@ -42,8 +42,5 @@ a {
   }
   .--side {
     box-shadow: 0 0 0.5rem black;
-    ul {
-      padding-left: 0;
-    }
   }
 }
