@@ -5,13 +5,13 @@ import { Redirect } from 'react-router-dom';
 class ThisComponent extends Component {
   render() {
     return (
-      this.props.account.data._id
+      this.props.account._id
       ?
       <div>
         <p>MyAccount</p>
         <ul>
-          <li>{this.props.account.data._id}</li>
-          <li>{this.props.account.data.email}</li>
+          <li>{this.props.account._id}</li>
+          <li>{this.props.account.email}</li>
         </ul>
       </div>
       :

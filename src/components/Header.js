@@ -6,10 +6,10 @@ import "./Header.scss";
 class ThisComponent extends React.Component {
   render() {
     var TopLinks = [];
-    if (this.props.account.data._id) {
+    if (this.props.account._id) {
       // logged in links
-      TopLinks.push(<span key={"asdfs"}>_id:{this.props.account.data._id}</span>);
-      TopLinks.push(<span key={"asdfw"}>email:{this.props.account.data.email}</span>);
+      TopLinks.push(<span key={"asdfs"}>_id:{this.props.account._id}</span>);
+      TopLinks.push(<span key={"asdfw"}>email:{this.props.account.email}</span>);
     } else {
       // logged out links
       TopLinks.push(<span key={"asdfl"}><Link to={"/login"}>Login</Link></span>);

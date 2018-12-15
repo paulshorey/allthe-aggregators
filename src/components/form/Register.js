@@ -34,7 +34,7 @@ class RegisterForm extends React.Component {
         />
         <button onClick={()=>{ 
           
-          this.props.dispatch(this.props.actions.RX_LOGIN({ "email": this.state.email, "password": this.state.password }));
+          this.props.dispatch(this.props.actions.RX_REGISTER({ "email": this.state.email, "password": window.MD5(this.state.password) }));
 
         }}>
           Submit

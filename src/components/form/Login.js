@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { Position, Toaster } from "@blueprintjs/core";
-const AppToaster = Toaster.create({
-    className: "recipe-toaster",
-    position: Position.TOP,
-});
+// import { Position, Toaster } from "@blueprintjs/core";
+// const AppToaster = Toaster.create({
+//     className: "recipe-toaster",
+//     position: Position.TOP,
+// });
 
 
 
@@ -43,7 +43,7 @@ class LoginForms extends React.Component {
         />
         <button onClick={()=>{ 
           
-          this.props.dispatch(this.props.actions.RX_LOGIN({ "email": this.state.email, "password": this.state.password }));
+          this.props.dispatch(this.props.actions.RX_LOGIN({ "email": this.state.email, "password": window.MD5(this.state.password) }));
 
         }}>
           Submit

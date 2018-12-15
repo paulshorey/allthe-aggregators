@@ -25,7 +25,6 @@ const saveState = (state) => {
   STATE:
 */
 const oldState = loadState() || {
-  data: {}
 };
 const ThisReducer = (state = oldState, action) => {
   var newState = window.deepCopy(state);
@@ -36,7 +35,7 @@ const ThisReducer = (state = oldState, action) => {
   switch (action.type) {
 
     case "RX_LOGIN":
-      newState.data = action.data;
+      newState = {...action.data};
     break;
 
   }

@@ -6,7 +6,7 @@ import RegisterForm from 'src/components/form/Register';
 class ThisComponent extends React.Component {
   render() {
     return (
-      !this.props.account.data._id
+      !this.props.account._id
       ?
       <div>
         <p>Register</p>

@@ -37,7 +37,28 @@ export const RX_LOGIN = function(userData) {
         // Success
         dispatch({
           type: "RX_LOGIN",
-          data: response.data.user
+          data: response.data
+        });
+
+    })
+    .catch((err)=> {
+        // Error
+        console.warn(err);
+    })
+
+  };
+}
+export const RX_REGISTER = function(userData) {
+  return function(dispatch, getState) {
+
+    // Request
+    postData('http://localhost:1080/auth/register', userData)
+    .then((response) => {
+        // Success
+      console.log('registered',response);
+        dispatch({
+          type: "RX_LOGIN",
+          data: response.data
         });
 
     })

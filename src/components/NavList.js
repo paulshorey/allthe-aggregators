@@ -17,7 +17,7 @@ class ThisComponent extends React.Component {
         }
       }
       if (link.subRoutes) {
-        let subRoutesMatached = link.subRoutes.filter((link) => { console.warn(link.url); return (link.url == this.props.location.pathname) });
+        let subRoutesMatached = link.subRoutes.filter(link => link.url == this.props.location.pathname);
         if (subRoutesMatached.length) {
           selectedOpened += " opened ";
         }
@@ -26,8 +26,8 @@ class ThisComponent extends React.Component {
       return (
         (
           (link.loggedIn === undefined)  ||  // link must be public, or user must be logged in
-          (link.loggedIn === true && this.props.account.data._id) ||
-          (link.loggedIn === false && !this.props.account.data._id)
+          (link.loggedIn === true && this.props.account._id) ||
+          (link.loggedIn === false && !this.props.account._id)
         )
         ?
         <li key={link.url} className={selectedOpened}>
@@ -64,8 +64,8 @@ class ThisComponent extends React.Component {
         && 
         (
           (this.props.data.loggedIn === undefined)  ||  // link must be public, or user must be logged in
-          (this.props.data.loggedIn === true && this.props.account.data._id) ||
-          (this.props.data.loggedIn === false && !this.props.account.data._id)
+          (this.props.data.loggedIn === true && this.props.account._id) ||
+          (this.props.data.loggedIn === false && !this.props.account._id)
         )
       )
       ?
