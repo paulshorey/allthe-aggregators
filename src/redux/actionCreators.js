@@ -27,11 +27,11 @@ function postData(url = ``, data = {}) {
 
 
 
-export const RX_LOGIN = function() {
+export const RX_LOGIN = function(userData) {
   return function(dispatch, getState) {
 
   	// Request
-  	postData('http://localhost:1080/auth/login', { "email": "ps@artspaces.net", "password": "demo" })
+  	postData('http://localhost:1080/auth/login', userData)
     .then((response) => {
     	// Success
 	    dispatch({
@@ -46,4 +46,4 @@ export const RX_LOGIN = function() {
     })
 
   };
-};
+}

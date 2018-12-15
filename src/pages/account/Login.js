@@ -6,13 +6,15 @@ class ThisComponent extends React.Component {
     return (
       <div>
         <p>Login</p>
-        <p onClick={()=>{ 
+        <input placeholder="email" type="text" value="" />
+        <input placeholder="password" type="password" value="" />
+        <button onClick={()=>{ 
         	
-          this.props.dispatch(this.props.actions.RX_LOGIN());
+          this.props.dispatch(this.props.actions.RX_LOGIN({ "email": "ps@artspaces.net", "password": "demo" }));
 
         }}>
-        	Click me
-        </p>
+        	Submit
+        </button>
       </div>
     )
   }
