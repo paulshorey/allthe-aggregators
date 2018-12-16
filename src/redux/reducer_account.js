@@ -38,6 +38,9 @@ const ThisReducer = (state = oldState, action) => {
       newState = {...action.data};
     break;
 
+    default:
+    break;
+
   }
 
   /*

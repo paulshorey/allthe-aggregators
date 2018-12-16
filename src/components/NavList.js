@@ -10,14 +10,14 @@ class ThisComponent extends React.Component {
     var NavLink = (link) => {
       // list item selected || open the list if child is selected || keep children collapsed and do not select
       let selectedOpened = "";
-      if (link.url == this.props.location.pathname) {
+      if (link.url === this.props.location.pathname) {
         selectedOpened += " selected ";
         if (link.subRoutes) {
           selectedOpened += " opened ";
         }
       }
       if (link.subRoutes) {
-        let subRoutesMatached = link.subRoutes.filter(link => link.url == this.props.location.pathname);
+        let subRoutesMatached = link.subRoutes.filter(link => link.url === this.props.location.pathname);
         if (subRoutesMatached.length) {
           selectedOpened += " opened ";
         }

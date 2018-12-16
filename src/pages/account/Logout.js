@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import LoginForm from 'src/components/form/Login';
 
 class ThisComponent extends React.Component {
   componentWillMount(){

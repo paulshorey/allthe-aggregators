@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Redirect, Link, Switch } from 'react-router-dom';
-import NotFound from "src/pages/NotFound";
+import { Route, Redirect, Switch } from 'react-router-dom';
 import Header from "src/components/Header";
 import NavList from "src/components/NavList";
 import './LayoutAndRoutes.scss';
@@ -40,7 +39,6 @@ var routes = [
 */
 class ThisComponent extends Component {
   render() {
-    console.log('Layout',this.props);
     var AllRoutes = [];
     var NavLists = {};
     routes.forEach((routeModule, index) => {

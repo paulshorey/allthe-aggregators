@@ -16,3 +16,7 @@ ul,
 p {
 	margin: 1rem 0;
 }
+
+.validate.invalid input {
+  border: solid red 1px;
+}

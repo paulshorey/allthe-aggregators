@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect, Link } from 'react-router-dom';
-import Async from 'react-code-splitting';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 /*
   Routes

@@ -1,9 +1,11 @@
 // if (process.env.NODE_ENV == "development") { /* we use local FE & BE */ }
 // if (process.env.NODE_ENV == "production") { /* we use remote server BE */ }
-const USE_PRODUCTION = process.env.NODE_ENV == "production";
+// const USE_PRODUCTION = process.env.NODE_ENV == "production";
+// console.log('USE_PRODUCTION',USE_PRODUCTION);
 // above distinction is made automatically
 // if below is true, then we shall use remote server BE, even though running app in development
-const STAGE_PRODUCTION = true;
+// const STAGE_PRODUCTION = true;
+// console.log('STAGE_PRODUCTION',STAGE_PRODUCTION);
 // now get on with the show...
 
 
@@ -32,7 +34,7 @@ export const RX_LOGIN = function(userData) {
   return function(dispatch, getState) {
 
     // Request
-    postData('http://localhost:1080/auth/login', userData)
+    postData('http://localhost:1080/account/login', userData)
     .then((response) => {
         // Success
         dispatch({
@@ -52,7 +54,7 @@ export const RX_REGISTER = function(userData) {
   return function(dispatch, getState) {
 
     // Request
-    postData('http://localhost:1080/auth/register', userData)
+    postData('http://localhost:1080/account/register', userData)
     .then((response) => {
         // Success
       console.log('registered',response);
