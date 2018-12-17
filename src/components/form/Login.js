@@ -15,7 +15,12 @@ class LoginForms extends React.Component {
     return (
       <ValidateForm>
 
-        <ValidateField validate={this.state.email} validations={[validations.required, validations.email]} >
+        <ValidateField
+          name="email"
+          value={this.state.email}
+          validations={[validations.required, validations.email]} 
+        >
+          <legend>Email:</legend>
           <label className="green">
             Email:
           </label>
@@ -24,24 +29,26 @@ class LoginForms extends React.Component {
             type="text"
             placeholder="email"
             onChange={(event)=>{ this.setState({ email: event.target.value }); }}
+            value={this.state.email}
           />
         </ValidateField>
 
 
-        <ValidateField validate={this.state.email} validations={[validations.required, validations.email]} >
-          <label className="green">
-            Password:
-          </label>
-          <input
-            context={this}
-            name="password"
-            type="password"
-            placeholder="password"
-            validations={[validations.required, validations.email]}
-          />
-        </ValidateField>
+        {/* <ValidateField value={this.state.password} validations={[validations.required, validations.email]} > */}
+        {/*   <label className="green"> */}
+        {/*     Password: */}
+        {/*   </label> */}
+        {/*   <input */}
+        {/*     context={this} */}
+        {/*     name="password" */}
+        {/*     type="password" */}
+        {/*     placeholder="password" */}
+        {/*     onChange={(event)=>{ this.setState({ password: event.target.value }); }} */}
+        {/*   /> */}
+        {/* </ValidateField> */}
 
-        <ValidateButton valid>
+
+        <ValidateButton if="valid">
           <button onClick={()=>{ 
             this.props.dispatch(this.props.actions.RX_LOGIN({ "email": this.state.email, "password": window.MD5(this.state.password) }));
           }}>
@@ -49,7 +56,7 @@ class LoginForms extends React.Component {
           </button>
         </ValidateButton>
 
-        <ValidateButton changed>
+        <ValidateButton if="changed">
           <button onClick={()=>{ 
             window.alert('reset');
           }}>
