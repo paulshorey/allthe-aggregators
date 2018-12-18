@@ -26,8 +26,8 @@ class ValidateField extends React.Component {
 		INITIAL VALUE
 	*/
 	componentDidMount() {
-  	this.context.fieldInitialValue({[this.props.name]: this.props.value });
-  	this.context.fieldStatus({[this.props.name]: validate(false, this.props) });
+  	this.context.on_fieldInitialValue({[this.props.name]: this.props.value });
+  	this.context.on_fieldStatusSet({[this.props.name]: validate(false, this.props) });
   }
 	
 	/*
@@ -35,7 +35,7 @@ class ValidateField extends React.Component {
 	*/
   componentDidUpdate(){
 		this.status = validate(true, this.props);
-  	this.context.fieldStatus({[this.props.name]: this.status });
+  	this.context.on_fieldStatusUpdate({[this.props.name]: this.status });
   }
 
 	/*

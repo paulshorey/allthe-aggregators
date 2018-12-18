@@ -36,16 +36,33 @@ export const RX_LOGIN = function(userData) {
     // Request
     postData('http://localhost:1080/account/login', userData)
     .then((response) => {
+      if (response.data) {
         // Success
         dispatch({
           type: "RX_LOGIN",
           data: response.data
         });
-
+        dispatch({
+          type: "RX_TOAST",
+          intent: "success",
+          message: "Welcome back!"
+        });
+      } else {
+        // Error
+        dispatch({
+          type: "RX_TOAST",
+          intent: "warning",
+          message: "login failed: " + response.error
+        });
+      }
     })
     .catch((err)=> {
-        // Error
-        console.warn(err);
+      // Error
+      dispatch({
+        type: "RX_TOAST",
+        intent: "danter",
+        message: "server error: " + err
+      });
     })
 
   };
@@ -56,28 +73,48 @@ export const RX_REGISTER = function(userData) {
     // Request
     postData('http://localhost:1080/account/register', userData)
     .then((response) => {
+      if (response.data) {
         // Success
-      console.log('registered',response);
         dispatch({
           type: "RX_LOGIN",
           data: response.data
         });
-
+        dispatch({
+          type: "RX_TOAST",
+          intent: "success",
+          message: "Registration successful. Welcome!"
+        });
+      } else {
+        // Error
+        dispatch({
+          type: "RX_TOAST",
+          intent: "warning",
+          message: "request failed: " + response.error
+        });
+      }
     })
     .catch((err)=> {
-        // Error
-        console.warn(err);
+      // Error
+      dispatch({
+        type: "RX_TOAST",
+        intent: "danger",
+        message: "server error: " + err
+      });
     })
 
   };
 }
 export const RX_LOGOUT = function(userData) {
   return function(dispatch, getState) {
-
     dispatch({
       type: "RX_LOGIN",
       data: {}
     });
-
+    // Error
+    dispatch({
+      type: "RX_TOAST",
+      intent: "warning",
+      message: "Bye"
+    });
   };
 }

@@ -5,6 +5,8 @@
   "dependencies": {
     "@blueprintjs/core": "^3.10.0",
     "@blueprintjs/datetime": "^3.5.0",
+    "lodash-core": "^4.17.11",
+    "md5": "^2.2.1",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

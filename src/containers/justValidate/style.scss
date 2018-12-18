@@ -1,8 +1,28 @@
 .ValidateForm.invalid {
-	border: solid 1px red;
+	border-bottom-color:red;
 }
 
-.ValidateButton.invalid {
-	opacity:1;
-	pointer-events:none;
+
+.ValidateField {
+	display:inline-block;
 }
+.ValidateField.invalid {
+	input,
+	select,
+	checkbox,
+	radio,
+	textarea {
+		border-bottom-color:red;
+	}
+}
+
+.ValidateButton {
+	display:inline-block;
+}
+.ValidateButton.disable {
+	opacity:0.5;
+	* {
+		pointer-events:none;
+	}
+}
+

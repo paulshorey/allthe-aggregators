@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
+import Notifications from "src/components/Notifications";
 import Header from "src/components/Header";
 import NavList from "src/components/NavList";
 import './LayoutAndRoutes.scss';
@@ -68,6 +69,7 @@ class ThisComponent extends Component {
     return (
       <div className="--layout LayoutAndRoutes">
         <Header className="--head" />
+        <Notifications className="--notifications" />
         <div className="--body">
           <div className="--side">
             {NavLists["/"]}

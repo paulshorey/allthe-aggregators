@@ -17,6 +17,7 @@ p {
 	margin: 1rem 0;
 }
 
-.validate.invalid input {
-  border: solid red 1px;
+button:focus {
+  outline: rgba(19, 124, 189, 0.25) auto 0.33rem;
+  outline-offset: -0.175rem;
 }

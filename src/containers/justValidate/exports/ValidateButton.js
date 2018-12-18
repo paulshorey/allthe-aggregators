@@ -8,15 +8,34 @@ class ValidateButton extends React.Component {
     /*
       STATUS (className)
     */
-    var addClass = "";
-    // if (this.context.state.changed && !this.context.state.valid) {
-    //   addClass = " invalid ";
-    // }
+    var disable = "";
+    if (this.props.if==="valid" && !this.context.formStatus.valid) {
+      disable = " disable ";
+    }
+    if (this.props.if==="changed" && !this.context.formStatus.changed) {
+      disable = " disable ";
+    }
     /*
       VIEW (wrapper div, status text)
     */
     return (
-      <div className={ "ValidateButton" + addClass }>
+      <div 
+        className={ "ValidateButton" + disable } 
+        onClick={()=>{ 
+          this.context.on_buttonClick(this.props.type);
+
+          if (!disable && this.props.onClick) { 
+
+            if (this.props.type==="reset") {
+              this.props.onClick(this.context.formInitialValues); 
+            } else {
+              this.props.onClick(); 
+            }
+
+          } 
+
+        }}
+      >
         {this.props.children}
       </div>
     )
