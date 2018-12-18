@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Angular</title>
+    <base href="/">
+
+    <meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/icomoon/style.css">
+
+    <script>
+        /* global "var global" variable required by Plotly.js npm package */
+        var global = window;
+
+        /* onResize, scroll helper */
+//         function bodyOnResize() {
+//             setTimeout(function () {
+// 
+//                 /*
+//                     add scroll class - pipeline will use
+//                 */
+//                 var contentW = document.getElementById('pipeline')
+//                     .scrollWidth || document.getElementById('pipeline').innerWidth;
+//                 var bodyW = window.innerWidth || document.body.clientWidth || document.documentElement
+//                     .clientWidth;
+// 
+//                 document.body.classList.remove('scroll-enabled');
+//                 document.body.classList.remove('scroll-right');
+//                 document.body.classList.remove('scroll-left');
+// 
+//                 if (contentW > (bodyW + 100)) {
+//                     document.body.classList.add('scroll-enabled');
+//                     if (window.pageXOffset < 20) {
+//                         document.body.classList.add('scroll-right');
+//                     }
+//                     if ((bodyW + window.pageXOffset) >= (contentW - 20)) {
+//                         document.body.classList.add('scroll-left');
+//                     }
+//                 }
+// 
+//                 /*
+//                     zoom pipeline
+//                 */
+//                 var zoom = (bodyW) / (contentW - 50);
+//                 if (zoom < 1) {
+//                     zoom = 1;
+//                 }
+//                 if (zoom > 1.5) {
+//                     zoom = 1.5;
+//                 }
+//                 document.getElementById('pipeline').style.transform = "scale("+zoom+", "+zoom+")";
+//             }, 500);
+// 
+//         }
+
+        /* onLoad, scroll back to beginning, in case page is refreshed after being scrolled last time */
+        // function bodyOnLoad() {
+        //     bodyOnResize();
+        //     window.scroll({
+        //         left: 0,
+        //         behavior: "smooth"
+        //     });
+        // };
+
+    </script>
+</head>
+
+<body xonload="bodyOnLoad()" xonresize="bodyOnResize()" xonscroll="bodyOnResize()">
+    <app-component></app-component>
+</body>
+
+</html>

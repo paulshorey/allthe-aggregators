@@ -1,0 +1,208 @@
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+html {
+    font-family: sans-serif;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/*
+    important: font-size is not just for font size
+    html {
+         font-size controls the `rem` sizing unit throughout the document - use `1rem` instead of `100%` to refer to this relative size - use this anywhere, it will still refer to the outer `html`
+    }
+    body {
+        font-size is kept default, so if you do NOT use `rem` BUT `%` or `em` you can keep the font static, and not increasing with screen resolution
+    }
+*/
+
+html {
+    font-size: 14px;
+    @media (min-width: 1500px) {
+        font-size: 15px;
+    }
+    @media (min-width: 1600px) {
+        font-size: 16px;
+    }
+    @media (min-width: 1700px) {
+        font-size: 17px;
+    }
+    @media (min-width: 1800px) {
+        font-size: 18px;
+    }
+    @media (min-width: 1900px) {
+        font-size: 19px;
+    }
+    body {
+        font-size: 14px;
+    }
+}
+
+input {
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: hsl(0, 0%, 100%);
+    border-top-color: rgba(0, 0, 0, 0.67);
+    border-left-color: rgba(0, 0, 0, 0.67);
+    border-bottom-color: rgba(0, 0, 0, 0.17);
+    border-right-color: rgba(0, 0, 0, 0.17);
+}
+
+a {
+    color: #52b9f0;
+}
+
+*:focus {
+    outline: none;
+}
+
+.error,
+.error * {
+    color: rgb(214, 81, 57) !important;
+}
+
+.success,
+.success * {
+    color: #6ace00 !important;
+}
+
+.box {
+    min-height: 325px;
+    transition: opacity 1s;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: solid 2px hsl(0, 0%, 60%);
+    .body {
+        flex-grow: 1;
+        position: relative;
+    }
+    .bottom {
+        position: relative; // &::after {
+        //     content: " ";
+        //     position: absolute;
+        //     bottom: -17.5rem;
+        //     left: 49px;
+        //     width: 2px;
+        //     height: 17.5rem;
+        //     background: hsl(0, 0%, 60%);
+        // }
+    }
+}
+
+.mat-slider-vertical .mat-slider-track-wrapper {
+    width: 44px !important;
+}
+
+.mat-slider-thumb {
+    //   border: solid 1px hsl(0, 0%, 10%) !important;
+    background: hsl(0, 0%, 10%) !important;
+    right: -10px !important;
+    bottom: -9px !important;
+    width: 20px !important;
+    height: 20px !important;
+    transform: scale(0.7) !important;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.mat-slider-thumb-label,
+.mat-slider-thumb-label-text {
+    border-radius: 0 !important; //   border: solid 1px hsl(0, 0%, 10%) !important;
+    transform: none !important;
+    background: #f4f4f4 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.mat-slider-thumb-label {
+    transform: none !important;
+    bottom: 8px !important;
+    right: auto !important;
+    left: 8px !important;
+    padding: 0 !important;
+    text-align: left;
+    height: 0 !important;
+}
+
+.mat-slider-thumb-label-text {
+    color: hsl(0, 0%, 10%) !important;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: sans-serif !important;
+    padding: 0 2px 0 2px;
+    min-width: 34px;
+}
+
+.mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb,
+.mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb-label {
+    background: hsl(0, 0%, 75%);
+}
+
+.mat-slider-min-value {
+    .mat-slider-thumb {
+        // background: hsl(0, 0%, 80%) !important;
+    }
+    .mat-slider-thumb-label-text {
+        // color: hsl(0, 0%, 75%) !important;
+        display: none !important;
+    }
+}
+
+.mat-accent .mat-slider-thumb,
+.mat-accent .mat-slider-thumb-label,
+.mat-accent .mat-slider-track-fill {
+    background: #000;
+}
+
+.mat-slider-track-fill {
+    position: relative;
+    z-index: 100;
+}
+
+// .mat-slider-ticks-container {
+//   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d8362b+0,ff9f3f+20,dfe539+36,cdea3a+40,afe572+53,bfbfbf+100 */
+//   background: #d8362b; /* Old browsers */
+//   background: -moz-linear-gradient(
+//     top,
+//     #d8362b 0%,
+//     #ff9f3f 20%,
+//     #dfe539 36%,
+//     #cdea3a 40%,
+//     #afe572 53%,
+//     #bfbfbf 100%
+//   ); /* FF3.6-15 */
+//   background: -webkit-linear-gradient(
+//     top,
+//     #d8362b 0%,
+//     #ff9f3f 20%,
+//     #dfe539 36%,
+//     #cdea3a 40%,
+//     #afe572 53%,
+//     #bfbfbf 100%
+//   ); /* Chrome10-25,Safari5.1-6 */
+//   background: linear-gradient(
+//     to bottom,
+//     #d8362b 0%,
+//     #ff9f3f 20%,
+//     #dfe539 36%,
+//     #cdea3a 40%,
+//     #afe572 53%,
+//     #bfbfbf 100%
+//   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8362b', endColorstr='#bfbfbf',GradientType=0 ); /* IE6-9 */
+// }

@@ -1,0 +1,216 @@
+.progress_indicator_bar {
+    position: relative;
+    margin: 0.5rem 0 1rem;
+    width: 99%;
+    height: 0.5rem;
+    border: solid 1px hsl(0, 0, 75%);
+    border-left-width: 2px;
+    background: #fff;
+    .part {
+        position: absolute;
+        top: -0.25px;
+        left: -0.25px;
+        height: calc(100% + 1px);
+        width: 50%;
+        background: hsl(0, 0, 75%);
+    }
+}
+
+/*
+    scroll
+*/
+.scroll {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s;
+    z-index: 101;
+    position: fixed;
+    top: 0.5rem;
+    cursor: pointer;
+    &.left {
+        left: 1rem;
+        color: #52b9f0;
+    }
+    &.right {
+        right: 1rem;
+        color: #88dd00;
+    }
+    span {
+        vertical-align: 2.5px;
+        span {
+            font-size: 125%;
+            font-weight: bold;
+        }
+        b {
+            font-size: 2rem;
+        }
+    }
+}
+
+body.scroll-left {
+    .scroll.left {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+body.scroll-right {
+    .scroll.right {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/*
+    background graphics
+*/
+// #pipeline {
+//     background: #f4f4f4 url(/assets/images/bg/pipeline_center.png) repeat-x top;
+//     background-size: 100% 70px;
+// }
+.bg_pipeline_img {
+    position: relative;
+    left: -5rem;
+    background-size: 86% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 70px;
+    width: calc(100% + 6.14rem);
+    margin-bottom: 3rem;
+    z-index: 100;
+    .bg_pipeline_caption {
+        position: absolute;
+        bottom: 35%;
+        color: #fff;
+        width: calc(100% + 4.75rem);
+        text-align: center;
+        font-weight: bold;
+        font-size: 125%;
+        &.left {
+            color: #fff;
+            width: 13%;
+        }
+    }
+    .bg_pipeline_left {
+        position: absolute;
+        left: 5rem;
+        height: 100%;
+        width: 50%;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: left center;
+        img {
+            position: relative;
+            height: 100%;
+        }
+    }
+    .bg_pipeline_right {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: right center;
+    }
+}
+
+/*
+    boxes
+*/
+
+#pipeline.box-components {
+    /*
+        auto-scale (in index.html) based on ratio of content width / page width
+    */
+    width: 1280px;
+    transform-origin: 0 0;
+    /*
+        layout
+    */
+    vertical-align: top;
+    display: flex;
+    position: relative;
+    margin: 24px 24px 12px;
+    > div {
+        visibility: hidden;
+        opacity: 0;
+        // height: 100%;
+        padding: 0 22px 0 0;
+        .box {
+            position: relative;
+            z-index: 99;
+            .heading {
+                &::before {
+                    content: " ";
+                    position: absolute;
+                    top: -4rem;
+                    left: 20px;
+                    width: 2px;
+                    height: 4.25rem;
+                    background: inherit;
+                    z-index: 99;
+                }
+            }
+        }
+        .box.next {
+            z-index: 90;
+        }
+    }
+}
+
+.box-components {
+    /*
+        style
+    */
+    .box {
+        position: relative;
+        top: -0.1px;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border: solid 2px hsl(0, 0%, 75%);
+        min-height: 355px;
+        min-width: 330px;
+        max-width: 380px;
+        margin-bottom: 24px;
+        .heading {
+            background: hsl(0, 0, 75);
+            color: #fff;
+            * {
+                margin: 0;
+                padding: 0.66rem 0.85rem;
+                line-height: 1;
+            }
+        }
+        .body {
+            padding: 1.5rem 1.1rem;
+            color: hsl(0, 0, 60);
+        }
+        h2 {
+            margin: 0;
+            padding: 0.5rem 0;
+            line-height: 100%;
+        }
+        h3 {
+            font-weight: normal; // color: #52B9F
+            b {
+                font-weight: bold;
+            }
+        }
+        p {
+            margin: 1.5rem 0.1rem;
+        }
+        .heading {
+            margin: -0.5px -0.5px;
+            width: calc(100% + 1px);
+        }
+        .body {
+            flex-grow: 1;
+            position: relative;
+        }
+        .bottom {
+            position: relative;
+        }
+    }
+}
