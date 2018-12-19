@@ -67,12 +67,14 @@ class ValidateForm extends React.Component {
   on_fieldInitialValue = (field) => {
     this.formInitialValues = {...this.formInitialValues, ...field}
   };  
-  on_fieldStatusSet = (field) => {    
+  on_fieldStatusSet = (field) => {   
+    console.log('field set'); 
     // new form status
     this.fields = {...this.fields, ...field}
     this.formStatus = generateFormStatus(this.fields);
   };
-  on_fieldStatusUpdate = (field) => {
+  on_fieldStatusUpdate = (field) => {   
+    console.log('field update');
     // new form status
     this.fields = {...this.fields, ...field}
     let status = generateFormStatus(this.fields);
@@ -89,7 +91,6 @@ class ValidateForm extends React.Component {
       case "submit":
         status.submitting = true;
         status.submitAttempted = true;
-        status.changed = false;
       break;
       case "reset":
         status.reset = true;
@@ -114,6 +115,7 @@ class ValidateForm extends React.Component {
   };
 
   render() {
+    console.log('form status',this.formStatus);
     return (
       <FormContext.Provider value={{formStatus: this.formStatus, formInitialValues: this.formInitialValues, on_fieldInitialValue: this.on_fieldInitialValue, on_fieldStatusUpdate: this.on_fieldStatusUpdate, on_fieldStatusSet: this.on_fieldStatusSet, on_buttonClick: this.on_buttonClick}}>
         <form onSubmit={this.on_submit}>

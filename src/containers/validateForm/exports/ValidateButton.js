@@ -15,10 +15,10 @@ class ValidateButton extends React.Component {
       STATUS (className)
     */
     var disable = "";
-    if (this.props.if==="valid" && !this.context.formStatus.valid) {
+    if (this.props.type==="submit" && !this.context.formStatus.valid) {
       disable = " disable ";
     }
-    if (this.props.if==="changed" && !this.context.formStatus.changed) {
+    if (this.props.type==="reset" && !this.context.formStatus.changed) {
       disable = " disable ";
     }
     if (this.context.submitting) {

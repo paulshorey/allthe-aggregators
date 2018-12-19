@@ -20,12 +20,17 @@ const validate = function(changed, props){
 
 class ValidateField extends React.Component {
 	static contextType = FormContext;
-	status = {};
+	constructor(props){
+		super(props);
+		this.status = {};
+		this.value = props.value;
+	}
 
 	/*
 		INITIAL VALUE
 	*/
 	componentDidMount() {
+		this.value = this.props.value;
   	this.context.on_fieldInitialValue({[this.props.name]: this.props.value });
   	this.context.on_fieldStatusSet({[this.props.name]: validate(false, this.props) });
   }
@@ -34,7 +39,7 @@ class ValidateField extends React.Component {
 		ON-CHANGE
 	*/
   componentDidUpdate(){
-		this.status = validate(true, this.props);
+		this.status = validate((this.value!=this.props.value), this.props);
   	this.context.on_fieldStatusUpdate({[this.props.name]: this.status });
   }
 
