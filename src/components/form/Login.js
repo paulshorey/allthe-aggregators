@@ -54,26 +54,22 @@ class LoginForms extends React.Component {
         </ValidateField>
 
 
-        <ValidateButton 
-          type="submit" 
-          if="valid"
-        >
+        <ValidateButton type="submit">
           <Button icon="tick" type="submit">
             Submit
           </Button>
         </ValidateButton>
 
-        {/* <ValidateButton  */}
-        {/*   type="reset"  */}
-        {/*   if="changed"  */}
-        {/*   onClick={(initialValues)=>{ */}
-        {/*     this.setState(initialValues); */}
-        {/*   }} */}
-        {/* > */}
-        {/*   <Button icon="cross"> */}
-        {/*     Reset */}
-        {/*   </Button> */}
-        {/* </ValidateButton> */}
+        <ValidateButton 
+          type="reset"
+          onClick={(initialValues)=>{
+            this.setState(initialValues);
+          }}
+        >
+          <Button icon="cross">
+            Reset
+          </Button>
+        </ValidateButton>
 
       </ValidateForm>
     )

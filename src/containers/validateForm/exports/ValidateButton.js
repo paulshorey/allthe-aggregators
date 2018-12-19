@@ -37,22 +37,14 @@ class ValidateButton extends React.Component {
             SUBMIT
           */
           if (this.props.type === "submit") {
-
-            this.setState({submitting:true});
-
+            this.setState({submitting:true}); // 
           }
 
           /*
-            RESET
+            ALWAYS (RESET)
           */
           if (!disable && this.props.onClick) { 
-
-            if (this.props.type==="reset") {
-              this.props.onClick(this.context.formInitialValues); 
-            } else {
-              this.props.onClick(); 
-            }
-
+            this.props.onClick(this.context.formInitialValues); // send initial values ~ for custom use
           } 
 
         }}
