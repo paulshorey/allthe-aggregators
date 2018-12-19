@@ -60,7 +60,7 @@ export const RX_LOGIN = function(userData) {
       // Error
       dispatch({
         type: "RX_TOAST",
-        intent: "danter",
+        intent: "danger",
         message: "server error: " + err
       });
     })
