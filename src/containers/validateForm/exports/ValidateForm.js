@@ -1,7 +1,6 @@
 import React from "react";
 import FormContext from "../context";
 import "../style.scss";
-import '../lib/Object.prototype.watch';
 
 const compareFormStatus = function(oldStatus, newStatus) {
   if (
@@ -88,6 +87,7 @@ class ValidateForm extends React.Component {
     let status = generateFormStatus(this.fields);
     switch (actionAttempted) {
       case "submit":
+        status.submitting = true;
         status.submitAttempted = true;
         status.changed = false;
       break;
@@ -104,11 +104,19 @@ class ValidateForm extends React.Component {
       this.forceUpdate();
     }
   };
+  on_submit = (event) => {
+    event.preventDefault();
+
+    // validate
+    if (this.formStatus.valid) {
+      this.props.onSubmit();
+    }
+  };
 
   render() {
     return (
       <FormContext.Provider value={{formStatus: this.formStatus, formInitialValues: this.formInitialValues, on_fieldInitialValue: this.on_fieldInitialValue, on_fieldStatusUpdate: this.on_fieldStatusUpdate, on_fieldStatusSet: this.on_fieldStatusSet, on_buttonClick: this.on_buttonClick}}>
-        <form onSubmit={(e)=>{ e.preventDefault(); this.props.onSubmit(); }}>
+        <form onSubmit={this.on_submit}>
         	<div className={"ValidateForm" + (this.formStatus.invalid.size && " invalid ")  }>
   	        {this.props.children}
   	      </div>

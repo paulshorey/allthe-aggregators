@@ -4,6 +4,12 @@ import FormContext from "../context";
 
 class ValidateButton extends React.Component {
 	static contextType = FormContext;
+  constructor(props) {
+    super(props);
+    this.state = {
+      submitting: false
+    }
+  }
   render() {
     /*
       STATUS (className)
@@ -15,15 +21,30 @@ class ValidateButton extends React.Component {
     if (this.props.if==="changed" && !this.context.formStatus.changed) {
       disable = " disable ";
     }
+    if (this.context.submitting) {
+      disable = " disable ";
+    }
     /*
       VIEW (wrapper div, status text)
     */
     return (
       <div 
         className={ "ValidateButton" + disable } 
-        onClick={()=>{ 
+        onClick={(e)=>{ 
           this.context.on_buttonClick(this.props.type);
 
+          /*
+            SUBMIT
+          */
+          if (this.props.type === "submit") {
+
+            this.setState({submitting:true});
+
+          }
+
+          /*
+            RESET
+          */
           if (!disable && this.props.onClick) { 
 
             if (this.props.type==="reset") {

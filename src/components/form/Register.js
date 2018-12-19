@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { ValidateForm, ValidateField, ValidateButton, validations } from 'src/containers/justValidate';
+import { ValidateForm, ValidateField, ValidateButton, validations } from 'src/containers/validateForm';
 import { Button, FormGroup, InputGroup } from "@blueprintjs/core";
 import md5 from "md5";
 
