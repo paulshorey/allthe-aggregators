@@ -11,12 +11,12 @@ import thunk from "redux-thunk";
 	REDUCERS
 	will receive an action (and state), and modify the state
 */
-
-import reducer_actions from "./reducer_actions";
-import reducer_account from "./reducer_account";
-import reducer_ui from "./reducer_ui";
-
+import reducer_aggregator from "./reducers/aggregator";
+import reducer_actions from "./reducers/actions";
+import reducer_account from "./reducers/account";
+import reducer_ui from "./reducers/ui";
 let reducers = combineReducers({
+  aggregator: reducer_aggregator,
   account: reducer_account,
   actions: reducer_actions,
   ui: reducer_ui

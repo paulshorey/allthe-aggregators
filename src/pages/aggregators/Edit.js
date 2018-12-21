@@ -1,13 +1,39 @@
-import React, { Component } from "react";
+import React from "react";
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-export default class extends Component {
+class ThisComponent extends React.Component {
+	constructor(props){
+		super(props);
+		console.log('find',props.match.params.item_id);
+		props.dispatch(props.actions.RX_AGGREGATOR_FIND({}));
+	}
   render() {
-  	console.log('Edit.js',this.props);
+    var Aggs = [];
+    for (let a in this.props.aggregator.find) {
+      let agg = this.props.aggregator.find[a];
+      Aggs.push(<li><label>{a}:</label> <b>{agg.title}</b></li>);
+    }
     return (
+      this.props.account._id
+      ?
       <div>
-        <p>Edit</p>
-        <p>{this.props.match.params.uid}</p>
+        <p>Edit Aggregator:</p>
+        <ul>
+          {Aggs}
+        </ul>
       </div>
+      :
+      <Redirect to="/account" />
     )
   }
 }
+
+const mapStateToProps = function(state) {
+  return {
+    account: state.account,
+    actions: state.actions,
+    aggregator: state.aggregator
+  }
+}
+export default connect(mapStateToProps)(ThisComponent);

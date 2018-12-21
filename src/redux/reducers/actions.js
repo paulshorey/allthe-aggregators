@@ -1,4 +1,4 @@
-import * as actions from './actionCreators';
+import * as actions from '../actionCreators';
 
 /*
   NOTE:

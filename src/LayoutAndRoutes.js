@@ -72,12 +72,12 @@ class ThisComponent extends Component {
         <Notifications className="--notifications" />
         <div className="--body">
           <div className="--side">
-            {NavLists["/"]}
-            {NavLists["/about"]}
+            {/* {NavLists["/"]} */}
+            {/* {NavLists["/about"]} */}
+            {NavLists["/account"]}
             {NavLists["/aggregators"]}
             {NavLists["/crawlers"]}
             {NavLists["/results"]}
-            {NavLists["/account"]}
           </div>
           <div className="--main">
             <Switch>

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 class ThisComponent extends React.Component {
   componentWillMount(){
-    this.props.dispatch(this.props.actions.RX_LOGOUT());
+    this.props.dispatch(this.props.actions.RX_ACCOUNT_LOGOUT());
   }
   render() {
     return (

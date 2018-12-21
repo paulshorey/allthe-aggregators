@@ -30,7 +30,8 @@ function postData(url = ``, data = {}) {
 
 
 
-export const RX_LOGIN = function(userData) {
+
+export const RX_ACCOUNT_LOGIN = function(userData) {
   return function(dispatch, getState) {
 
     // Request
@@ -39,35 +40,22 @@ export const RX_LOGIN = function(userData) {
       if (response.data) {
         // Success
         dispatch({
-          type: "RX_LOGIN",
+          type: "RX_ACCOUNT_LOGIN",
           data: response.data
         });
-        dispatch({
-          type: "RX_TOAST",
-          intent: "success",
-          message: "Welcome back!"
-        });
+        dispatch(RX_TOAST("success", "Welcome back!"));
       } else {
-        // Error
-        dispatch({
-          type: "RX_TOAST",
-          intent: "warning",
-          message: "login failed: " + response.error
-        });
+        // Fail
+        dispatch(RX_TOAST("fail", "login failed: " + response.error));
       }
     })
     .catch((err)=> {
-      // Error
-      dispatch({
-        type: "RX_TOAST",
-        intent: "danger",
-        message: "server error: " + err
-      });
+      dispatch(RX_TOAST("error", "server error: " + err));
     })
 
   };
 }
-export const RX_REGISTER = function(userData) {
+export const RX_ACCOUNT_REGISTER = function(userData) {
   return function(dispatch, getState) {
 
     // Request
@@ -76,45 +64,117 @@ export const RX_REGISTER = function(userData) {
       if (response.data) {
         // Success
         dispatch({
-          type: "RX_LOGIN",
+          type: "RX_ACCOUNT_LOGIN",
           data: response.data
         });
-        dispatch({
-          type: "RX_TOAST",
-          intent: "success",
-          message: "Registration successful. Welcome!"
-        });
+        dispatch(RX_TOAST("success", "Registration successful. Welcome!"));
       } else {
-        // Error
-        dispatch({
-          type: "RX_TOAST",
-          intent: "warning",
-          message: "request failed: " + response.error
-        });
+        // Fail
+        dispatch(RX_TOAST("fail", "request failed: " + response.error));
       }
     })
     .catch((err)=> {
-      // Error
-      dispatch({
-        type: "RX_TOAST",
-        intent: "danger",
-        message: "server error: " + err
-      });
+      dispatch(RX_TOAST("error", "server error: " + err));
     })
 
   };
 }
-export const RX_LOGOUT = function(userData) {
+export const RX_ACCOUNT_LOGOUT = function(userData) {
   return function(dispatch, getState) {
     dispatch({
-      type: "RX_LOGIN",
+      type: "RX_ACCOUNT_LOGIN",
       data: {}
     });
-    // Error
-    dispatch({
-      type: "RX_TOAST",
-      intent: "warning",
-      message: "Bye"
-    });
+    dispatch(RX_TOAST("fail", "Bye"));
   };
+}
+
+
+
+
+export const RX_AGGREGATOR_ADD = function(userData) {
+  return function(dispatch, getState) {
+    const access_token = getState().account._access_token;
+
+    // Request
+    postData('http://localhost:1080/aggregator/add/'+access_token, userData)
+    .then((response) => {
+      if (response.data) {
+        // Success
+        dispatch({
+          type: "RX_AGGREGATOR_ADD",
+          data: response.data
+        });
+        dispatch(RX_TOAST("success", "Added new aggregator: "+response.data.title));
+      } else {
+        // Failed
+        dispatch(RX_TOAST("fail", "request failed: " + response.error));
+      }
+    })
+    .catch((err)=> {
+      dispatch(RX_TOAST("error", "server error: " + err));
+    })
+
+  };
+}
+
+export const RX_AGGREGATOR_FIND = function(query) {
+  return function(dispatch, getState) {
+    const access_token = getState().account._access_token;
+
+    // Request
+    postData('http://localhost:1080/aggregator/find/'+access_token, query)
+    .then((response) => {
+      if (response.data) {
+        // Success
+        dispatch({
+          type: "RX_AGGREGATOR_FIND",
+          data: response.data
+        });
+      } else {
+        // Failed
+        dispatch(RX_TOAST("fail", "request failed: " + response.error));
+      }
+    })
+    .catch((err)=> {
+      dispatch(RX_TOAST("error", "server error: " + err));
+    })
+
+  };
+}
+
+
+
+
+export const RX_TOAST = function(intent, message) {
+  // IF BOTH ARGUMENTS PROVIDED:
+  if (intent && message) {
+    // remap intent
+    switch (intent) {
+      case "error":
+        intent = "danger";
+      break;
+      case "fail":
+        intent = "warning";
+      break;
+      default:
+        intent = "success";
+      break;
+    }
+    // display second argument
+    return {
+      type: "RX_TOAST",
+      intent: intent,
+      message: message
+    };
+  }
+  // OPTIONALLY, USE WITH ONLY ONE ARGUMENT:
+  if (intent && !message) {
+    // display first argument instead of second
+    return {
+      type: "RX_TOAST",
+      intent: "",
+      message: intent
+    };
+  }
 }

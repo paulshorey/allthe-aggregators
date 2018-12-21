@@ -21,3 +21,18 @@ button:focus {
   outline: rgba(19, 124, 189, 0.25) auto 0.33rem;
   outline-offset: -0.175rem;
 }
+
+fieldset {
+  display:block;
+}
+
+b {
+  font-weight: 500;
+}
+
+li {
+  margin: 1rem;
+}
+label {
+  color: #999;
+}

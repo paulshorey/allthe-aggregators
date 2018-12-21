@@ -1,6 +1,5 @@
 import React from "react";
 import FormContext from "../context";
-import "../style.scss";
 
 const compareFormStatus = function(oldStatus, newStatus) {
   if (

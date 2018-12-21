@@ -34,7 +34,7 @@ const ThisReducer = (state = oldState, action) => {
   */
   switch (action.type) {
 
-    case "RX_LOGIN":
+    case "RX_ACCOUNT_LOGIN":
       newState = {...action.data};
     break;
 

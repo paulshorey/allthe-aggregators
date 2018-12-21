@@ -8,8 +8,7 @@ class ThisComponent extends React.Component {
     var TopLinks = [];
     if (this.props.account._id) {
       // logged in links
-      TopLinks.push(<span key={"asdfs"}>_id:{this.props.account._id}</span>);
-      TopLinks.push(<span key={"asdfw"}>email:{this.props.account.email}</span>);
+      TopLinks.push(<span key={"adf"}><Link to={"/logout"}>Logout</Link></span>);
     } else {
       // logged out links
       TopLinks.push(<span key={"asdfl"}><Link to={"/login"}>Login</Link></span>);
@@ -17,7 +16,7 @@ class ThisComponent extends React.Component {
     return (
       <div className={this.props.className + " Header"}>
         <div className="--logo">
-          <span>Dashboard</span>
+          <span><Link to="/account">Dashboard</Link></span>
         </div>
         <div className="--links">
           {TopLinks}

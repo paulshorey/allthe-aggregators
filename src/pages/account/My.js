@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import "./style/myaccount.scss";
 
 class ThisComponent extends Component {
   render() {
+    var AccountProps = [];
+    for (let a in this.props.account) {
+      AccountProps.push(<li><label>{a}:</label> <b>{this.props.account[a].toString()}</b></li>);
+    }
     return (
       this.props.account._id
       ?
-      <div>
+      <div className="MyAccount">
         <p>MyAccount</p>
         <ul>
-          <li>{this.props.account._id}</li>
-          <li>{this.props.account.email}</li>
+          {AccountProps}
         </ul>
       </div>
       :

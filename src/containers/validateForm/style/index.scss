@@ -3,9 +3,6 @@
 }
 
 
-.ValidateField {
-	display:inline-block;
-}
 .ValidateField.invalid {
 	input,
 	select,
@@ -16,9 +13,6 @@
 	}
 }
 
-.ValidateButton {
-	display:inline-block;
-}
 .ValidateButton.disable {
 	opacity:0.5;
 	* {

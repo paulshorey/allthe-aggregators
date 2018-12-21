@@ -12,7 +12,7 @@ var routes = [
     },
   },
   {
-    url: "/aggregators/edit/:uid",
+    url: "/aggregators/edit/:item_id",
     component: function() {
       return require('src/pages/aggregators/Edit').default;
     },
