@@ -8,10 +8,10 @@ class ThisComponent extends React.Component {
 		props.dispatch(props.actions.RX_AGGREGATOR_FIND());
 	}
   render() {
-    var Aggs = [];
-    for (let a in this.props.aggregator.find) {
-      let agg = this.props.aggregator.find[a];
-      Aggs.push(<li><label>{a}:</label> <b>{agg.title}</b></li>);
+    var Items = [];
+    for (let a in this.props.aggregator.list) {
+      let agg = this.props.aggregator.list[a];
+      Items.push(<li><label>{a}:</label> <b>{agg.title}</b></li>);
     }
     return (
       this.props.account._id
@@ -19,7 +19,7 @@ class ThisComponent extends React.Component {
       <div>
         <p>Aggregators List</p>
         <ul>
-          {Aggs}
+          {Items}
         </ul>
       </div>
       :

@@ -1,5 +1,6 @@
 const oldState = {
-  find: []
+  list: [],
+  selected: {}
 };
 const ThisReducer = (state = oldState, action) => {
   var newState = window.deepCopy(state);
@@ -11,10 +12,10 @@ const ThisReducer = (state = oldState, action) => {
 
     case "RX_AGGREGATOR_ADD":
       console.log('ADD',action.data);
-      // newState.find.push(action.data);
+      newState.list.push(action.data);
     break;
     case "RX_AGGREGATOR_FIND":
-      newState.find = action.data.results;
+      newState.list = action.data;
     break;
 
     default:
